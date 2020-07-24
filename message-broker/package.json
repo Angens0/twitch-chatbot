@@ -1,0 +1,20 @@
+{
+    "name": "message-broker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon -r dotenv/config src/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "redis": "^3.0.2",
+        "tmi.js": "^1.5.0"
+    },
+    "devDependencies": {
+        "dotenv": "^8.2.0",
+        "nodemon": "^2.0.4"
+    }
+}
