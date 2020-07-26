@@ -11,6 +11,7 @@ subscriber.on("message", (channel, message) => {
                 return;
             }
 
+            console.log("Say:", msg);
             tmiClient.say(target, msg);
             break;
     }
