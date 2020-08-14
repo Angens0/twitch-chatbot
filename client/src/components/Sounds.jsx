@@ -14,6 +14,10 @@ const Sounds = () => {
         socket.on("meow", () => {
             addToQueue(meow);
         });
+
+        socket.on("url", url => {
+            addToQueue(url);
+        });
     }, []);
 
     const addToQueue = url => {
@@ -28,12 +32,20 @@ const Sounds = () => {
     }, [mainQueue, secondQueue]);
 
     return (
-        <div>
+        <div
+            style={{
+                position: "absolute",
+                width: "100vw",
+                height: "100vh",
+            }}
+        >
             <ReactPlayer
                 style={{ display: visible ? "block" : "none" }}
                 playing={playing}
                 volume={volume}
                 url={mainQueue}
+                width="100%"
+                height="100%"
                 onEnded={() => {
                     setMainQueue(queue => queue.slice(1, queue.length));
                 }}
