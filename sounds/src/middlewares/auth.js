@@ -10,6 +10,7 @@ const auth = async (req, res, next) => {
         req.auth = true;
     } catch (error) {
         console.log(error);
+        return res.sendStatus(401);
     }
 
     return next();

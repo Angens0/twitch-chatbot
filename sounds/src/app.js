@@ -5,6 +5,7 @@ const cors = require("cors");
 const { signInRouter } = require("./routes/signIn");
 const { signOutRouter } = require("./routes/signOut");
 const { playRouter } = require("./routes/play");
+const { cssRouter } = require("./routes/css");
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use(
 app.use(signInRouter);
 app.use(signOutRouter);
 app.use(playRouter);
+app.use(cssRouter);
 
 module.exports = { app };

@@ -3,14 +3,11 @@ const { auth } = require("../middlewares/auth");
 
 const router = express.Router();
 
-router.post("/play", auth, (req, res) => {
-    const { url } = req.body;
-
+router.post("/css/:property/:value", auth, (req, res) => {
     // imported here to avoid circular dependecy
     const { io } = require("../io");
-
-    io.emit("url", url);
+    io.emit("css", req.params.property, req.params.value);
     return res.sendStatus(200);
 });
 
-module.exports = { playRouter: router };
+module.exports = { cssRouter: router };
