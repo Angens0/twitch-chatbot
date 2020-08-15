@@ -1,5 +1,40 @@
+@import "inputrange";
+
 html,
 body {
     margin: 0;
     background: rgba($color: #000000, $alpha: 0);
+}
+
+.SoundsPanel {
+    font-family: Roboto Mono, monospace;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 2rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-bottom: 1rem;
+
+        * {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-bottom: 1rem;
+
+        * {
+            margin-bottom: 0.5rem;
+        }
+    }
 }
