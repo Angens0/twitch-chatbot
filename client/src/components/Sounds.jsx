@@ -5,10 +5,15 @@ import meow from "../sounds/meow.wav";
 
 const Sounds = () => {
     const [playing] = useState(true);
-    const [visible] = useState(true);
     const [volume, setVolume] = useState(0.3);
     const [mainQueue, setMainQueue] = useState([meow]);
     const [secondQueue, setSecondQueue] = useState([]);
+    const [css, setCss] = useState({
+        position: "absolute",
+        width: "100vw",
+        height: "100vh",
+        display: "none",
+    });
 
     useEffect(() => {
         socket.on("meow", () => {
@@ -17,6 +22,14 @@ const Sounds = () => {
 
         socket.on("url", url => {
             addToQueue(url);
+        });
+
+        socket.on("css", (property, value) => {
+            setCss(oldCss => {
+                const newCss = { ...oldCss };
+                newCss[property] = value;
+                return newCss;
+            });
         });
     }, []);
 
@@ -32,15 +45,8 @@ const Sounds = () => {
     }, [mainQueue, secondQueue]);
 
     return (
-        <div
-            style={{
-                position: "absolute",
-                width: "100vw",
-                height: "100vh",
-            }}
-        >
+        <div style={css}>
             <ReactPlayer
-                style={{ display: visible ? "block" : "none" }}
                 playing={playing}
                 volume={volume}
                 url={mainQueue}
