@@ -2,9 +2,11 @@ const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
+const cors = require("cors");
 const cookieSession = require("cookie-session");
 const { signInRouter } = require("./routes/signIn");
 const { auth } = require("./middlewares/auth");
+const { signOutRouter } = require("./routes/signOut");
 
 const start = async () => {
     io.on("connection", socket => {
@@ -18,6 +20,12 @@ const start = async () => {
         }, 15000);
     });
 
+    app.use(
+        cors({
+            origin: "http://localhost:3000",
+            credentials: true,
+        })
+    );
     app.use(express.json());
     app.use(
         cookieSession({
@@ -27,6 +35,7 @@ const start = async () => {
     );
 
     app.use(signInRouter);
+    app.use(signOutRouter);
     app.post("/play", auth, (req, res) => {
         if (!req.auth) {
             return res.sendStatus(401);
