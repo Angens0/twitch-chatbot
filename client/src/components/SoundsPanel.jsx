@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { request } from "../utils/request";
 
 const SoundsPanel = () => {
     const [url, setUrl] = useState("");
+    const [cssProperty, setCssProperty] = useState("");
+    const [cssValue, setCssValue] = useState("");
     const [volume, setVolume] = useState(0.5);
 
     const onSubmitUrl = async event => {
@@ -17,14 +19,39 @@ const SoundsPanel = () => {
         });
     };
 
+    const onSubmitCss = async event => {
+        event.preventDefault();
+        await request({
+            url: `http://localhost:4000/css/${cssProperty}/${cssValue}`,
+            method: "post",
+            body: {},
+            onSuccess: () => {
+                setCssProperty("");
+                setCssValue("");
+            },
+        });
+    };
+
     return (
         <div className="SoundsPanel">
-            <form>
+            <form onSubmit={onSubmitCss}>
                 <h2>CSS</h2>
                 <label>Property</label>
-                <input type="text" />
+                <input
+                    type="text"
+                    value={cssProperty}
+                    onChange={event => {
+                        setCssProperty(event.target.value);
+                    }}
+                />
                 <label>Value</label>
-                <input type="text" />
+                <input
+                    type="text"
+                    value={cssValue}
+                    onChange={event => {
+                        setCssValue(event.target.value);
+                    }}
+                />
                 <button>Submit</button>
             </form>
             <form onSubmit={onSubmitUrl}>
