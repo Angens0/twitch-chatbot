@@ -23,14 +23,27 @@ const SignInForm = () => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <input
-                type="password"
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-            />
-            <button>Sign In</button>
-        </form>
+        <>
+            <form onSubmit={onSubmit}>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
+                />
+                <button>Sign In</button>
+            </form>
+            <button
+                onClick={async () => {
+                    await request({
+                        url: "/signout",
+                        method: "post",
+                        body: {},
+                    });
+                }}
+            >
+                Sign Out
+            </button>
+        </>
     );
 };
 

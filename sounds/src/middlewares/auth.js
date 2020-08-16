@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const auth = async (req, res, next) => {
     if (!req.session.jwt) {
-        return next();
+        return res.sendStatus(401);
     }
 
     try {
