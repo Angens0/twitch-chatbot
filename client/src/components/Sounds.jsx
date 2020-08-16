@@ -4,7 +4,7 @@ import { socket } from "../socket";
 import meow from "../sounds/meow.wav";
 
 const Sounds = () => {
-    const [playing] = useState(true);
+    const [playing, setPlaying] = useState(true);
     const [volume, setVolume] = useState(0.3);
     const [mainQueue, setMainQueue] = useState([meow]);
     const [secondQueue, setSecondQueue] = useState([]);
@@ -30,6 +30,10 @@ const Sounds = () => {
                 newCss[property] = value;
                 return newCss;
             });
+        });
+
+        socket.on("playing", playing => {
+            setPlaying(() => playing);
         });
 
         socket.on("volume", volume => {

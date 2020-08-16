@@ -31,9 +31,39 @@ const SoundsPanel = () => {
                     min="0"
                     max="10"
                 />
-                <button>Play</button>
-                <button>Pause</button>
-                <button>Meow</button>
+                <button
+                    onClick={async () => {
+                        await request({
+                            url: "http://localhost:4000/play/play",
+                            method: "post",
+                            body: {},
+                        });
+                    }}
+                >
+                    Play
+                </button>
+                <button
+                    onClick={async () => {
+                        await request({
+                            url: "http://localhost:4000/play/pause",
+                            method: "post",
+                            body: {},
+                        });
+                    }}
+                >
+                    Pause
+                </button>
+                <button
+                    onClick={async () => {
+                        await request({
+                            url: "http://localhost:4000/play/meow",
+                            method: "post",
+                            body: {},
+                        });
+                    }}
+                >
+                    Meow
+                </button>
             </div>
         </div>
     );
