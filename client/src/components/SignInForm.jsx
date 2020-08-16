@@ -10,7 +10,7 @@ const SignInForm = () => {
         event.preventDefault();
 
         await request({
-            url: "http://localhost:4000/signin",
+            url: "/signin",
             method: "post",
             body: {
                 password,

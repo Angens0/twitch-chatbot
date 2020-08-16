@@ -8,7 +8,7 @@ const PlayUrlForm = () => {
     const onSubmit = async event => {
         event.preventDefault();
         await request({
-            url: "http://localhost:4000/play",
+            url: "/play",
             method: "post",
             body: { url },
             onSuccess: () => resetUrl(),

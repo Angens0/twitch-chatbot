@@ -9,7 +9,7 @@ const CssForm = () => {
     const onSubmit = async event => {
         event.preventDefault();
         await request({
-            url: `http://localhost:4000/css/${property}/${value}`,
+            url: `/css/${property}/${value}`,
             method: "post",
             body: {},
             onSuccess: () => {

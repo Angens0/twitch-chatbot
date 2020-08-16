@@ -1,8 +1,8 @@
-import axios from "axios";
+import { client } from "../client";
 
 export const request = async ({ url, method, body, onSuccess }) => {
     try {
-        const response = await axios[method](url, body, {
+        const response = await client[method](url, body, {
             withCredentials: true,
         });
 

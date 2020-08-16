@@ -9,7 +9,7 @@ const SoundsPanel = () => {
 
     useEffect(() => {
         request({
-            url: "http://localhost:4000/volume",
+            url: "/volume",
             method: "post",
             body: { volume: volume },
         });
@@ -34,7 +34,7 @@ const SoundsPanel = () => {
                 <button
                     onClick={async () => {
                         await request({
-                            url: "http://localhost:4000/play/play",
+                            url: "/play/play",
                             method: "post",
                             body: {},
                         });
@@ -45,7 +45,7 @@ const SoundsPanel = () => {
                 <button
                     onClick={async () => {
                         await request({
-                            url: "http://localhost:4000/play/pause",
+                            url: "/play/pause",
                             method: "post",
                             body: {},
                         });
@@ -56,7 +56,7 @@ const SoundsPanel = () => {
                 <button
                     onClick={async () => {
                         await request({
-                            url: "http://localhost:4000/play/meow",
+                            url: "/play/meow",
                             method: "post",
                             body: {},
                         });
