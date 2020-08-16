@@ -31,6 +31,10 @@ const Sounds = () => {
                 return newCss;
             });
         });
+
+        socket.on("volume", volume => {
+            setVolume(() => volume);
+        });
     }, []);
 
     const addToQueue = url => {

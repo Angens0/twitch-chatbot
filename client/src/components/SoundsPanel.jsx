@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { request } from "../utils/request";
 import CssForm from "./SoundsPanel/CssForm";
 import PlayUrlForm from "./SoundsPanel/PlayUrlForm";
 
 const SoundsPanel = () => {
-    const [volume, setVolume] = useState(0.5);
+    // TODO: load current volume as initial state
+    const [volume, setVolume] = useState(0.3);
+
+    useEffect(() => {
+        request({
+            url: "http://localhost:4000/volume",
+            method: "post",
+            body: { volume: volume },
+        });
+    }, [volume]);
 
     return (
         <div className="SoundsPanel">
