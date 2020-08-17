@@ -10,7 +10,7 @@ const SignInForm = () => {
         event.preventDefault();
 
         await request({
-            url: "/signin",
+            url: "/api/sounds/signin",
             method: "post",
             body: {
                 password,
@@ -35,7 +35,7 @@ const SignInForm = () => {
             <button
                 onClick={async () => {
                     await request({
-                        url: "/signout",
+                        url: "/api/sounds/signout",
                         method: "post",
                         body: {},
                     });

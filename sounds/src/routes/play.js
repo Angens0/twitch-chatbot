@@ -3,7 +3,7 @@ const { auth } = require("../middlewares/auth");
 
 const router = express.Router();
 
-router.post("/play", auth, (req, res) => {
+router.post("/api/sounds/play", auth, (req, res) => {
     const { url } = req.body;
 
     // imported here to avoid circular dependecy
@@ -13,7 +13,7 @@ router.post("/play", auth, (req, res) => {
     return res.sendStatus(200);
 });
 
-router.post("/play/play", auth, (req, res) => {
+router.post("/api/sounds/play/play", auth, (req, res) => {
     // imported here to avoid circular dependecy
     const { io } = require("../io");
 
@@ -21,7 +21,7 @@ router.post("/play/play", auth, (req, res) => {
     return res.sendStatus(200);
 });
 
-router.post("/play/pause", auth, (req, res) => {
+router.post("/api/sounds/play/pause", auth, (req, res) => {
     // imported here to avoid circular dependecy
     const { io } = require("../io");
 
@@ -29,7 +29,7 @@ router.post("/play/pause", auth, (req, res) => {
     return res.sendStatus(200);
 });
 
-router.post("/play/meow", auth, (req, res) => {
+router.post("/api/sounds/play/meow", auth, (req, res) => {
     // imported here to avoid circular dependecy
     const { io } = require("../io");
 

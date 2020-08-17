@@ -8,7 +8,7 @@ const PlayUrlForm = () => {
     const onSubmit = async event => {
         event.preventDefault();
         await request({
-            url: "/play",
+            url: "/api/sounds/play",
             method: "post",
             body: { url },
             onSuccess: () => resetUrl(),

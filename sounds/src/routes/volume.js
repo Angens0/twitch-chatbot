@@ -3,7 +3,7 @@ const { auth } = require("../middlewares/auth");
 
 const router = express.Router();
 
-router.post("/volume", auth, (req, res) => {
+router.post("/api/sounds/volume", auth, (req, res) => {
     const { volume } = req.body;
     if (typeof volume !== "number") {
         return res.sendStatus(400);

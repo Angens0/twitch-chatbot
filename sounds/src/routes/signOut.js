@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-router.post("/signout", async (req, res) => {
+router.post("/api/sounds/signout", async (req, res) => {
     req.session.jwt = undefined;
     return res.sendStatus(200);
 });

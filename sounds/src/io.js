@@ -1,6 +1,8 @@
 const { httpServer } = require("./httpServer");
 
-const io = require("socket.io")(httpServer);
+const io = require("socket.io")(httpServer, {
+    path: "/api/sounds/socket.io",
+});
 
 io.on("connection", socket => {
     console.log("a user connected");

@@ -9,7 +9,7 @@ const CssForm = () => {
     const onSubmit = async event => {
         event.preventDefault();
         await request({
-            url: `/css/${property}/${value}`,
+            url: `/api/sounds/css/${property}/${value}`,
             method: "post",
             body: {},
             onSuccess: () => {

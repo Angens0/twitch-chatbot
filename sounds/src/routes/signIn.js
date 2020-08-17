@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
-router.post("/signin", async (req, res) => {
+router.post("/api/sounds/signin", async (req, res) => {
     const { password } = req.body;
     if (!password) {
         return res.sendStatus(400);
