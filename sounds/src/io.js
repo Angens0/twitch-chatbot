@@ -5,14 +5,12 @@ const io = require("socket.io")(httpServer, {
 });
 
 io.on("connection", socket => {
-    console.log("a user connected");
+    console.log(`${new Date()}: User ${socket.id} connected`);
 
-    setTimeout(() => {
-        io.emit("meow");
-    }, 10000);
-    setTimeout(() => {
-        io.emit("meow");
-    }, 15000);
+    socket.on("disconnect", reason => {
+        console.log(`${new Date()}: User ${socket.id} disconnected\nReason:\n`);
+        console.log(reason);
+    });
 });
 
 module.exports = { io };
