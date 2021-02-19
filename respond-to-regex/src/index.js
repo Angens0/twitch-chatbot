@@ -4,6 +4,8 @@ const { getExpressions } = require("./mongoClient");
 
 const start = async () => {
     let expressions = [];
+    let sleeperStake = 1;
+    const sleeperBaseTime = 60;
 
     try {
         expressions = await getExpressions();
@@ -47,13 +49,16 @@ const start = async () => {
                         0.5
                     );
                     probability = Math.round(probability * 100) / 100;
+
                     publisher.publish(
                         "say",
                         JSON.stringify({
                             target: channel,
                             msg: `ResidentSleeper wykryty. Szansa na t/o wynosi: ${
                                 probability * 100
-                            }%`,
+                            }%. Obecna stawka: ${
+                                sleeperStake * sleeperBaseTime
+                            } sekund.`,
                         })
                     );
                     if (getRandomIntInclusive(1, 100) <= probability * 100) {
@@ -61,9 +66,14 @@ const start = async () => {
                             "say",
                             JSON.stringify({
                                 target: channel,
-                                msg: `/timeout ${username}`,
+                                msg: `/timeout ${username} ${
+                                    sleeperStake * sleeperBaseTime
+                                }`,
                             })
                         );
+                        sleeperStake = 1;
+                    } else {
+                        sleeperStake += 1;
                     }
                 }
 
